@@ -16,7 +16,7 @@ songFrame.place(x=10, y=1, width=580, height=210)
 
 scrolly = tk.Scrollbar(songFrame, orient=tk.VERTICAL)
 PlayList = tk.Listbox(songFrame, bg='silver', fg='black', relief=tk.GROOVE, font=('Arial', 10), selectmode=tk.SINGLE,
-                      selectbackground='black', height=100)
+                      selectbackground='black', height=100, yscrollcommand=scrolly.set)
 scrolly.config(command=PlayList.yview)
 scrolly.pack(side=tk.RIGHT, fill=tk.Y)
 PlayList.pack(fill=tk.BOTH)
