@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 
 import pygame as pg
 
@@ -14,7 +15,7 @@ songFrame = tk.LabelFrame(root, text='Song Play List', bg='black', fg='white', f
 songFrame.place(x=10, y=1, width=580, height=210)
 
 scrolly = tk.Scrollbar(songFrame, orient=tk.VERTICAL)
-PlayList = tk.Listbox(songFrame, bg='silver', fg='black', relief=tk.GROOVE, font=('Arial', 5), selectmode=tk.SINGLE,
+PlayList = tk.Listbox(songFrame, bg='silver', fg='black', relief=tk.GROOVE, font=('Arial', 10), selectmode=tk.SINGLE,
                       selectbackground='black', height=100)
 scrolly.config(command=PlayList.yview)
 scrolly.pack(side=tk.RIGHT, fill=tk.Y)
@@ -47,5 +48,14 @@ unpausing.grid(row=0, column=2, padx=10, pady=20)
 
 pausing = tk.Button(Cpanel, text='pausing', width=15)
 pausing.grid(row=0, column=3, padx=10, pady=20)
+
+# Adding song to listbox
+
+os.chdir('play_list')
+mysong = os.listdir()
+
+for song in mysong:
+    if ".mp3" in song:
+        PlayList.insert(tk.END, song)
 
 root.mainloop()
